@@ -24,14 +24,22 @@
 #     if a6[index] < a6[index+1]:
 #          number +=2
 # print(number)
-def list():
-    a = []
-    number = 0
-    for i in range(2):
-        a.append(1)
-        for index in a:
-            if a[index] < a[index +1]:
-              number += 1
-              print(number)
+# def list():
+#     a = []
+#     number = 0
+#     for i in range(2):
+#         a.append(1)
+#         for elem in a:
+#             if a[elem] < a[index +1]:
+#               number += 1
+#               print(number)
+#
+# list()
 
-list()
+# Сформировать возрастающий массив из четных чисел.
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+b = []
+for i in a:
+    if a[i] // 2:
+        b.append(a)
+print(b)
