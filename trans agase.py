@@ -18,6 +18,8 @@
 # чем на железнодорожном транспорте, а авиатранспорт имеет аварийность очень низкую. На скоростных магистралях вероятность аварии меньше, чем на обычных дорогах.
 # При аварии трансагентство возвращает заказчику двойную стоимость перевозки.
 # Процесс имитации может быть остановлен пользователем программы для просмотра параметров объектов:
+import random
+
 
 class TransAgencies:
     def __init__(self, unit_weight, unit_path, delivery_speed, deliv_price, weather):
@@ -36,30 +38,33 @@ class Air(TransAgencies):
         super().__init__(unit_path, unit_weight, delivery_speed, deliv_price, weather)
 
     def __str__(self):
-        return f"способ доставки: {self.__class__.__name__}, скорость достовки:{self.delivery_speed},cтоимость доставки:{self.deliv_price}, погодные условия:{self.weather}"
+        return f"способ доставки: {self.__class__.__name__}, скорость достовки:{self.delivery_speed},cтоимость доставки:{self.deliv_price}, что - то:{self.unit_weight * self.unit_path * self.delivery_speed}, погодные условия:{self.weather}"
 
     @staticmethod
     def random():
         pool = [
             {
+                "nit_weight": "1.67",  # random.randint()
+                "unit_path = unit_path": "1.34",  # random.randint()
+                "delivery_speed": "15",  # random.randint()
+                "deliv_price": "10 000 руб",
+                "city": "Moscva: 15 000 000",
+                "weather": random.choice("Солнечно, дождливо, ураган, метель, пыльные бури", )
 
-            },
-            {
-                "Москва": "15 000 000",
-                "Санкт-Петербург": "5 000 000",
-                "Новосибирск": "1 500 000",
-                "Нижний Новгород": "1 200 000"
             }
         ]
         return TransAgencies.random(Air, pool)
 
 
 class Auto(TransAgencies):
-    def __init__(self, unit_path, unit_weight, delivery_speed):
-        super().__init__(unit_path, unit_weight, delivery_speed)
+    def __init__(self, unit_path, unit_weight, delivery_speed, deliv_price, weather):
+        super().__init__(unit_path, unit_weight, delivery_speed, deliv_price, weather)
 
 
 class Train(TransAgencies):
-    def __init__(self, unit_path, unit_weight, delivery_speed):
-        super().__init__(unit_path, unit_weight, delivery_speed)
+    def __init__(self, unit_path, unit_weight, delivery_speed, deliv_price, weather):
+        super().__init__(unit_path, unit_weight, delivery_speed, deliv_price, weather)
 
+# "Санкт-Петербург": "5 000 000",
+# "Новосибирск": "1 500 000",
+# "Нижний Новгород": "1 200 000"
